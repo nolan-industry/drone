@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from __future__ import print_function
-from dronekit import connect, VehicleMode
+from dronekit import connect, VehicleMode, LocationGlobalRelative
 import time
 
 print("connecting to sitl copter")
@@ -82,13 +82,13 @@ print("set default/target airspeed to 3")
 vehicle.airspeed = 3
 
 print("going towards 1st point for 30secs...")
-waypoint1 = LocationGlobalRelative(-35.361354, 149.165218, 20)
+waypoint1 = LocationGlobalRelative(52.484203, -1.889921, 20)
 vehicle.simple_goto(waypoint1)
 
 time.sleep(30)
 
 print('going to 2nd point for 30 secs (groundspeed set to 10m/s')
-waypoint2 = LocationGlobalRelative(-35.363244, 149.168801, 20)
+waypoint2 = LocationGlobalRelative(52.483873, -1.888719, 20)
 vehicle.simple_goto(waypoint2, groundspeed=10)
 
 time.sleep(30)
