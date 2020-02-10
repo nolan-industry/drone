@@ -52,3 +52,48 @@ print(" Airspeed: %s" % vehicle.airspeed)    # settable
 print(" Mode: %s" % vehicle.mode.name)    # settable
 print(" Armed: %s" % vehicle.armed)    # settable
 
+def arm_and_takeoff(aTargetAltitude):
+    print("basic pre-arm checks")
+    while not vehicle.is_armable:
+        print("wait for vehicle to initialise..")
+        time.sleep(1)
+
+    print("Arming motors")
+    vehicle.mode = VehicleMode("GUIDED")
+    vehicle.armed = True
+
+    while not vehicle.armed:
+        print("waiting for arming...")
+        time.sleep(1)
+
+    print("Taking off")
+    vehicle.simple_takeoff(aTargetAltitude)
+
+    while True:
+        print("Altitude:", vehicle.location.global_relative_frame.alt)
+        if vehicle.location.global_relative_frame.alt >= aTargetAltitude * 0.95:
+            print("reached target altitude")
+            break
+        time.sleep(1)
+
+arm_and_takeoff(10)
+
+print("set default/target airspeed to 3")
+vehicle.airspeed = 3
+
+print("going towards 1st point for 30secs...")
+waypoint1 = LocationGlobalRelative(-35.361354, 149.165218, 20)
+vehicle.simple_goto(waypoint1)
+
+time.sleep(30)
+
+print('going to 2nd point for 30 secs (groundspeed set to 10m/s')
+waypoint2 = LocationGlobalRelative(-35.363244, 149.168801, 20)
+vehicle.simple_goto(waypoint2, groundspeed=10)
+
+time.sleep(30)
+
+vehicle.mode = VehicleMode("RTL")
+
+print('close vehicle object')
+vehicle.close()
