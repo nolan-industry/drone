@@ -7,7 +7,7 @@ from pymavlink import mavutil # Needed for command message definitions
 import math
 
 #change the first argument to your vehicle connection string
-#vehicle = connect(connection_string, wait_ready=True)
+vehicle = connect('tcp:127.0.0.1:5763', wait_ready=True)
 
 def arm_and_takeoff(TargetAltitude):
     """
@@ -173,7 +173,7 @@ def get_location_metres(original_location, dNorth, dEast):
     else:
         raise Exception("Invalid Location object passed")
 
-    return targetlocation;
+    return targetlocation
 
 
 def get_distance_metres(aLocation1, aLocation2):
@@ -202,7 +202,7 @@ def get_bearing(aLocation1, aLocation2):
     bearing = 90.00 + math.atan2(-off_y, off_x) * 57.2957795
     if bearing < 0:
         bearing += 360.00
-    return bearing;
+    return bearing
 
 
 """
@@ -301,7 +301,7 @@ def goto(dNorth, dEast, gotoFunction=vehicle.simple_goto):
         print("Distance to target: ", remainingDistance)
         if remainingDistance <= targetDistance * 0.01:  # Just below target, in case of undershoot.
             print("Reached target")
-            break;
+            break
         time.sleep(2)
 
 
