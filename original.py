@@ -605,8 +605,6 @@ vehicle.mode = VehicleMode("LAND")
 print("Close vehicle object")
 vehicle.close()
 
-# Shut down simulator if it was started.
-if sitl is not None:
-    sitl.stop()
+
 
 print("Completed")
