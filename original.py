@@ -43,9 +43,6 @@ def arm_and_takeoff(aTargetAltitude):
         time.sleep(1)
 
 
-# Arm and take of to altitude of 5 meters
-arm_and_takeoff(5)
-
 """
 Convenience functions for sending immediate/guided mode commands to control the Copter.
 
@@ -372,8 +369,8 @@ def send_global_velocity(velocity_x, velocity_y, velocity_z, duration):
         vehicle.send_mavlink(msg)
         time.sleep(1)
 
-arm_and_takeoff(20)
-
+arm_and_takeoff(15)
+time.sleep(10)
 """
 Fly a triangular path using the standard Vehicle.simple_goto() method.
 
