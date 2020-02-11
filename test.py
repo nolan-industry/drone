@@ -377,48 +377,7 @@ time.sleep(10)
 
 
 
-
-"""
-Fly the vehicle in a 50m square path, using the SET_POSITION_TARGET_LOCAL_NED command 
-and specifying a target position (rather than controlling movement using velocity vectors). 
-The command is called from goto_position_target_local_ned() (via `goto`).
-
-The position is specified in terms of the NED (North East Down) relative to the Home location.
-
-WARNING: The "D" in NED means "Down". Using a positive D value will drive the vehicle into the ground!
-
-The code sleeps for a time (DURATION) to give the vehicle time to reach each position (rather than 
-sending commands based on proximity).
-
-The code also sets the region of interest (MAV_CMD_DO_SET_ROI) via the `set_roi()` method. This points the 
-camera gimbal at the the selected location (in this case it aligns the whole vehicle to point at the ROI).
-"""
-
-print("SQUARE path using SET_POSITION_TARGET_LOCAL_NED and position parameters")
-DURATION = 20 #Set duration for each segment.
-
-print("North 50m, East 0m, 10m altitude for %s seconds" % DURATION)
-goto_position_target_local_ned(50,0,-10)
-print("Point ROI at current location (home position)")
-# NOTE that this has to be called after the goto command as first "move" command of a particular type
-# "resets" ROI/YAW commands
-set_roi(vehicle.location.global_relative_frame)
-time.sleep(DURATION)
-
-print("North 50m, East 50m, 10m altitude")
-goto_position_target_local_ned(50,50,-10)
-time.sleep(DURATION)
-
-print("Point ROI at current location")
-set_roi(vehicle.location.global_relative_frame)
-
-print("North 0m, East 50m, 10m altitude")
-goto_position_target_local_ned(0,50,-10)
-time.sleep(DURATION)
-
-print("North 0m, East 0m, 10m altitude")
-goto_position_target_local_ned(0,0,-10)
-time.sleep(DURATION)
+DURATION = 20
 
 
 
@@ -459,32 +418,32 @@ print("Yaw 180 absolute (South)")
 condition_yaw(180)
 
 print("Velocity South & up")
-send_ned_velocity(SOUTH,0,UP,DURATION)
-send_ned_velocity(0,0,0,1)
+#send_ned_velocity(SOUTH,0,UP,DURATION)
+#send_ned_velocity(0,0,0,1)
 
 
 print("Yaw 270 absolute (West)")
 condition_yaw(270)
 
-print("Velocity West & down")
-send_ned_velocity(0,WEST,DOWN,DURATION)
-send_ned_velocity(0,0,0,1)
+#print("Velocity West & down")
+#send_ned_velocity(0,WEST,DOWN,DURATION)
+#send_ned_velocity(0,0,0,1)
 
 
 print("Yaw 0 absolute (North)")
 condition_yaw(0)
 
-print("Velocity North")
-send_ned_velocity(NORTH,0,0,DURATION)
-send_ned_velocity(0,0,0,1)
+#print("Velocity North")
+#send_ned_velocity(NORTH,0,0,DURATION)
+#send_ned_velocity(0,0,0,1)
 
 
 print("Yaw 90 absolute (East)")
 condition_yaw(90)
 
-print("Velocity East")
-send_ned_velocity(0,EAST,0,DURATION)
-send_ned_velocity(0,0,0,1)
+#print("Velocity East")
+#send_ned_velocity(0,EAST,0,DURATION)
+#send_ned_velocity(0,0,0,1)
 
 
 """
