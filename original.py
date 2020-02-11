@@ -10,6 +10,7 @@ import math
 vehicle = connect('tcp:127.0.0.1:5763', wait_ready=True)
 
 
+
 def arm_and_takeoff(aTargetAltitude):
     """
     Arms vehicle and fly to aTargetAltitude.
