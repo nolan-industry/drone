@@ -656,8 +656,7 @@ while True:
         area.all() > 315
         print("tracking")
 
-        if area.any() < 315:
-            break
+    else:
     print("No object found, Returning to Launch point")
     vehicle.mode = VehicleMode("RTL")
     print("Close vehicle object")
