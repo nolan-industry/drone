@@ -330,10 +330,10 @@ while True:
 
 
 
-		while x < 290:
+		if x < 290:
 			condition_yaw(-15,relative=True)
 			send_global_velocity(0,0,0,3)
-		while x > 310:
+		if x > 310:
 			condition_yaw(15,relative=True)
 			send_global_velocity(0,0,0,3)
 
