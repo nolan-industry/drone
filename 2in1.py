@@ -333,10 +333,13 @@ while True:
 		if x < 290:
 			condition_yaw(-15,relative=True)
 			send_global_velocity(0,0,0,3)
+			print("turning left")
+			time.sleep(3)
 		if x > 310:
 			condition_yaw(15,relative=True)
 			send_global_velocity(0,0,0,3)
-
+			print("turining right")
+			time.sleep(3)
 
 
 	if miss > 10:
