@@ -343,8 +343,8 @@ while True:
 		break
 
 	# if the 'q' key is pressed, stop the loop
-	if key == ord("q"):
-		break
+	#if key == ord("q"):
+		#break
 # if we are not using a video file, stop the camera video stream
 
 vs.stop()
