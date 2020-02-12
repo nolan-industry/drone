@@ -326,20 +326,20 @@ while True:
 		print(x)
 		print(y)
 		miss = 0
-		time.sleep(1)
+		time.sleep(0.5)
 
 
 
 		if x < 290:
-			condition_yaw(-15,relative=True)
+			condition_yaw((-15),relative=True)
 			send_global_velocity(0,0,0,3)
 			print("turning left")
-			time.sleep(3)
+			time.sleep(1)
 		if x > 310:
 			condition_yaw(15,relative=True)
 			send_global_velocity(0,0,0,3)
 			print("turining right")
-			time.sleep(3)
+			time.sleep(1)
 
 
 	if miss > 10:
