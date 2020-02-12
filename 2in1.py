@@ -349,21 +349,21 @@ while True:
 
 
 		if x < 290:
-			left_condition_yaw(5,relative=True)
+			left_condition_yaw(10,relative=True)
 			send_global_velocity(0,0,0,1)
 			print("turning left")
 			time.sleep(0.5)
 		if x > 310:
-			condition_yaw(5,relative=True)
+			condition_yaw(10,relative=True)
 			send_global_velocity(0,0,0,1)
 			print("turining right")
 			time.sleep(0.5)
 		if y < 190:
-			send_global_velocity(0,10,0,1)
+			send_ned_velocity(0,10,0,1)
 			print("moving forward")
 			time.sleep(0.5)
 		if y > 210:
-			send_global_velocity(0,-10,0,1)
+			send_ned_velocity(0,-10,0,1)
 			print("moving backward")
 			time.sleep(0.5)
 
