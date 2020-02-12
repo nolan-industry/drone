@@ -359,11 +359,11 @@ while True:
 			print("turining right")
 			time.sleep(0.5)
 		if y < 190:
-			send_global_velocity(0,0.5,0,1)
+			send_global_velocity(0,10,0,1)
 			print("moving forward")
 			time.sleep(0.5)
 		if y > 210:
-			send_global_velocity(0,-0.5,0,1)
+			send_global_velocity(0,-10,0,1)
 			print("moving backward")
 			time.sleep(0.5)
 
