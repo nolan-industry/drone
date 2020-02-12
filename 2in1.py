@@ -340,7 +340,8 @@ while True:
 
 
 	if miss > 10:
-		break
+		print("Returning to Launch")
+		vehicle.mode = VehicleMode("RTL")
 
 	# if the 'q' key is pressed, stop the loop
 	#if key == ord("q"):
