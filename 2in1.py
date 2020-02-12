@@ -58,7 +58,7 @@ def arm_and_takeoff(aTargetAltitude):
 
 arm_and_takeoff(4)
 
-
+duration = 5
 # add flight control
 def condition_yaw(heading, relative=False):
 	if relative:
@@ -264,8 +264,8 @@ while True:
 
 
 	# show the frame to our screen
-	cv2.imshow("Frame", frame)
-	key = cv2.waitKey(1) & 0xFF
+	#cv2.imshow("Frame", frame)
+	#key = cv2.waitKey(1) & 0xFF
 
 	miss = 0 # set a timer, if no object detected in 10sec, break and RTL
 	while center is None:
@@ -315,8 +315,8 @@ while True:
 
 
 		# show the frame to our screen
-		cv2.imshow("Frame", frame)
-		key = cv2.waitKey(1) & 0xFF
+		#cv2.imshow("Frame", frame)
+		#key = cv2.waitKey(1) & 0xFF
 
 		if miss > 10:
 			break
