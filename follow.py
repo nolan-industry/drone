@@ -624,20 +624,19 @@ greenLower = (110, 185, 132)
 greenUpper = (121, 253, 178)
 
 while True:
-	frame = vs.read()
-	frame = imutils.resize(frame, width=600)
-    	blurred = cv2.GaussianBlur(frame, (11, 11), 0)
-    	hsv = cv2.cvtColor(blurred, cv2.COLOR_BGR2HSV)
-   	mask = cv2.inRange(hsv, greenLower, greenUpper)
-    	mask = cv2.erode(mask, None, iterations=2)
-    	mask = cv2.dilate(mask, None, iterations=2)
+        frame = vs.read()
+        frame = imutils.resize(frame, width=600)
+        blurred = cv2.GaussianBlur(frame, (11, 11), 0)
+        hsv = cv2.cvtColor(blurred, cv2.COLOR_BGR2HSV)
+        mask = cv2.inRange(hsv, greenLower, greenUpper)
+        mask = cv2.erode(mask, None, iterations=2)
+        mask = cv2.dilate(mask, None, iterations=2)
 
     # find contours in the mask and initialize the current
     # (x, y) center of the ball
-    	cnts = cv2.findContours(mask.copy(), cv2.RETR_EXTERNAL,
+        cnts = cv2.findContours(mask.copy(), cv2.RETR_EXTERNAL,
                             cv2.CHAIN_APPROX_SIMPLE)
-    	cnts = imutils.grab_contours(cnts)
-    	center = None
+        cnts = imutils.grab_contours(cnts)
 
 # only proceed if at least one contour was found
 	if len(cnts) > 0:
@@ -652,12 +651,18 @@ while True:
 			# then update the list of tracked points
 			cv2.circle(frame, (int(x), int(y)), int(radius),
 				(0, 255, 255), 2)
-    	else:
-        	print("No object found, Returning to Launch point")
-        	vehicle.mode = VehicleMode("RTL")
-        	print("Close vehicle object")
-        	vehicle.close()
+    area = math.pi * radius*radius
+    while:
+        area.all() > 315
+        print("tracking")
 
-        
+        if area.any() < 315:
+            break
+    print("No object found, Returning to Launch point")
+    vehicle.mode = VehicleMode("RTL")
+    print("Close vehicle object")
+    vehicle.close()
+
+
 
 
