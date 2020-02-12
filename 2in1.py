@@ -66,8 +66,8 @@ while True:
 
 
 	# show the frame to our screen
-	cv2.imshow("Frame", frame)
-	key = cv2.waitKey(1) & 0xFF
+	#cv2.imshow("Frame", frame)
+	#key = cv2.waitKey(1) & 0xFF
 
 	miss = 0 # set a timer, if no object detected in 10sec, break and RTL
 	while center is None:
@@ -117,8 +117,8 @@ while True:
 
 
 		# show the frame to our screen
-		cv2.imshow("Frame", frame)
-		key = cv2.waitKey(1) & 0xFF
+		#cv2.imshow("Frame", frame)
+		#key = cv2.waitKey(1) & 0xFF
 
 		if miss > 10:
 			break
@@ -143,8 +143,8 @@ while True:
 		break
 
 	# if the 'q' key is pressed, stop the loop
-	if key == ord("q"):
-		break
+	#if key == ord("q"):
+		#break
 # if we are not using a video file, stop the camera video stream
 
 vs.stop()
