@@ -128,7 +128,7 @@ def get_location_metres(original_location, dNorth, dEast):
 	else:
 		raise Exception("Invalid Location object passed")
 
-	return targetlocation;
+	return targetlocation
 
 def get_distance_metres(aLocation1, aLocation2):
 
@@ -143,7 +143,7 @@ def get_bearing(aLocation1, aLocation2):
 	bearing = 90.00 + math.atan2(-off_y, off_x) * 57.2957795
 	if bearing < 0:
 		bearing += 360.00
-	return bearing;
+	return bearing
 
 def goto_position_target_global_int(aLocation):
 
@@ -194,7 +194,7 @@ def goto(dNorth, dEast, gotoFunction=vehicle.simple_goto):
 		print("Distance to target: ", remainingDistance)
 		if remainingDistance <= targetDistance * 0.01:  # Just below target, in case of undershoot.
 			print("Reached target")
-			break;
+			break
 		time.sleep(2)
 
 def send_ned_velocity(velocity_x, velocity_y, velocity_z, duration):
@@ -359,13 +359,57 @@ while True:
 			print("turining right")
 			time.sleep(0.5)
 		if y < 190:
-			send_ned_velocity(0,10,0,1)
-			print("moving forward")
-			time.sleep(0.5)
+			h = vehicle.heading
+			if 0 <= h <= 90:
+				i = 2 * math.tan(math.radians(h))
+				send_ned_velocity(2,i,0,1)
+				print("moving forward")
+				time.sleep(0.5)
+
+			if 90 < h < 180:
+				i = 2 * math.tan(math.radians(h-90))
+				send_ned_velocity(i,2,0,1)
+				print("moving forward")
+				time.sleep(0.5)
+
+			if 180 <= h <= 270:
+				i = 2 * math.tan(math.radians(h-180))
+				send_ned_velocity(-2,-i,0,1)
+				print("moving forward")
+				time.sleep(0.5)
+
+			if 270 < h <= 359:
+				i = 2 * math.tan(math.radians(h-270))
+				send_ned_velocity(i,-2,0,1)
+				print("moving forward")
+				time.sleep(0.5)
+
+
 		if y > 210:
-			send_ned_velocity(0,-10,0,1)
-			print("moving backward")
-			time.sleep(0.5)
+			h = vehicle.heading
+			if 0 <= h <= 90:
+				i = 2 * math.tan(math.radians(h))
+				send_ned_velocity(2, i, 0, 1)
+				print("moving forward")
+				time.sleep(0.5)
+
+			if 90 < h < 180:
+				i = 2 * math.tan(math.radians(h - 90))
+				send_ned_velocity(i, 2, 0, 1)
+				print("moving forward")
+				time.sleep(0.5)
+
+			if 180 <= h <= 270:
+				i = 2 * math.tan(math.radians(h - 180))
+				send_ned_velocity(-2, -i, 0, 1)
+				print("moving forward")
+				time.sleep(0.5)
+
+			if 270 < h <= 359:
+				i = 2 * math.tan(math.radians(h - 270))
+				send_ned_velocity(i, -2, 0, 1)
+				print("moving forward")
+				time.sleep(0.5)
 
 
 
