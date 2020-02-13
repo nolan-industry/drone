@@ -16,9 +16,9 @@ greenLower = (000, 160, 123)
 greenUpper = (121, 255, 197)
 pts = deque(str(32))
 
-vs = WebcamVideoStream(src=0).start()
+vs = WebcamVideoStream(src=0).start()  #starts the camera
 
-time.sleep(2.0)
+time.sleep(2.0) #warm up camera
 
 #connect to copter
 vehicle = connect('tcp:127.0.0.1:5763', wait_ready=True)
@@ -58,7 +58,7 @@ def arm_and_takeoff(aTargetAltitude):
 
 arm_and_takeoff(4)
 
-duration = 5
+#duration = 5     #set duration for flight control
 # add flight control
 def condition_yaw(heading, relative=False):
 	if relative:
@@ -286,7 +286,7 @@ while True:
 	#key = cv2.waitKey(1) & 0xFF
 
 	miss = 0 # set a timer, if no object detected in 10sec, break and RTL
-	while center is None:
+	while center is None:    #if no object found
 		print("no object")
 		miss += 1
 		print(miss)
@@ -336,14 +336,14 @@ while True:
 		#cv2.imshow("Frame", frame)
 		#key = cv2.waitKey(1) & 0xFF
 
-		if miss > 10:
+		if miss > 10:   #if after 10 secs still no object found, break the loop
 			break
 
 	else:
-		center = (x,y)
+		center = (x,y)   #locate the object
 		print(x)
 		print(y)
-		miss = 0
+		miss = 0        #reset timer after object found
 		time.sleep(0.5)
 
 
