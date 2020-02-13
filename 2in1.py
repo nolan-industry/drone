@@ -389,26 +389,26 @@ while True:
 			h = vehicle.heading
 			if 0 <= h <= 90:
 				i = 2 * math.tan(math.radians(h))
-				send_ned_velocity(2, i, 0, 1)
-				print("moving forward")
+				send_ned_velocity(-2, -i, 0, 1)
+				print("moving backward")
 				time.sleep(0.5)
 
 			if 90 < h < 180:
 				i = 2 * math.tan(math.radians(h - 90))
-				send_ned_velocity(i, 2, 0, 1)
-				print("moving forward")
+				send_ned_velocity(-i, -2, 0, 1)
+				print("moving backward")
 				time.sleep(0.5)
 
 			if 180 <= h <= 270:
 				i = 2 * math.tan(math.radians(h - 180))
-				send_ned_velocity(-2, -i, 0, 1)
-				print("moving forward")
+				send_ned_velocity(2, i, 0, 1)
+				print("moving backward")
 				time.sleep(0.5)
 
 			if 270 < h <= 359:
 				i = 2 * math.tan(math.radians(h - 270))
-				send_ned_velocity(i, -2, 0, 1)
-				print("moving forward")
+				send_ned_velocity(-i, 2, 0, 1)
+				print("moving backward")
 				time.sleep(0.5)
 
 
