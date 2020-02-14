@@ -43,6 +43,8 @@ def arm_and_takeoff(aTargetAltitude):
             break
         time.sleep(1)
 
+while True:
+    print "Mode: %s" % vehicle.mode.name
 
 """
 Convenience functions for sending immediate/guided mode commands to control the Copter.
