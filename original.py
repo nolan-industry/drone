@@ -43,8 +43,6 @@ def arm_and_takeoff(aTargetAltitude):
             break
         time.sleep(1)
 
-while True:
-    print("Mode: %s" % vehicle.mode.name)
 
 """
 Convenience functions for sending immediate/guided mode commands to control the Copter.
@@ -373,6 +371,7 @@ def send_global_velocity(velocity_x, velocity_y, velocity_z, duration):
         time.sleep(1)
 
 arm_and_takeoff(15)
+print("Mode: %s" % vehicle.mode.name)
 time.sleep(10)
 """
 Fly a triangular path using the standard Vehicle.simple_goto() method.
@@ -388,13 +387,13 @@ vehicle.groundspeed=5
 
 print("Position North 80 West 50")
 goto(80, -50)
-
+print("Mode: %s" % vehicle.mode.name)
 print("Position North 0 East 100")
 goto(0, 100)
-
+print("Mode: %s" % vehicle.mode.name)
 print("Position North -80 West 50")
 goto(-80, -50)
-
+print("Mode: %s" % vehicle.mode.name)
 
 
 
@@ -428,7 +427,7 @@ vehicle.airspeed = 10
 
 print("Position North 100 West 130")
 goto(100, -130, goto_position_target_global_int)
-
+print("Mode: %s" % vehicle.mode.name)
 
 
 """
@@ -457,9 +456,11 @@ print("Point ROI at current location (home position)")
 # "resets" ROI/YAW commands
 set_roi(vehicle.location.global_relative_frame)
 time.sleep(DURATION)
+print("Mode: %s" % vehicle.mode.name)
 
 print("North 50m, East 50m, 10m altitude")
 goto_position_target_local_ned(50,50,-10)
+print("Mode: %s" % vehicle.mode.name)
 time.sleep(DURATION)
 
 print("Point ROI at current location")
@@ -510,12 +511,13 @@ print("SQUARE path using SET_POSITION_TARGET_LOCAL_NED and velocity parameters")
 
 print("Yaw 180 absolute (South)")
 condition_yaw(180)
+print("Mode: %s" % vehicle.mode.name)
 
 print("Velocity South & up")
 send_ned_velocity(SOUTH,0,UP,DURATION)
 send_ned_velocity(0,0,0,1)
 
-
+print("Mode: %s" % vehicle.mode.name)
 print("Yaw 270 absolute (West)")
 condition_yaw(270)
 
@@ -561,7 +563,7 @@ condition_yaw(225)
 print("Velocity South, West and Up")
 send_global_velocity(SOUTH,WEST,UP,DURATION)
 send_global_velocity(0,0,0,1)
-
+print("Mode: %s" % vehicle.mode.name)
 
 print("Yaw 90 relative (to previous yaw heading)")
 condition_yaw(90,relative=True)
@@ -569,6 +571,7 @@ condition_yaw(90,relative=True)
 print("Velocity North, West and Down")
 send_global_velocity(NORTH,WEST,DOWN,DURATION)
 send_global_velocity(0,0,0,1)
+print("Mode: %s" % vehicle.mode.name)
 
 print("Set new home location to current location")
 vehicle.home_location=vehicle.location.global_frame
@@ -594,7 +597,7 @@ condition_yaw(90,relative=True)
 print("Velocity South and East")
 send_global_velocity(SOUTH,EAST,0,DURATION)
 send_global_velocity(0,0,0,1)
-
+print("Mode: %s" % vehicle.mode.name)
 
 """
 The example is completing. LAND at current location.
